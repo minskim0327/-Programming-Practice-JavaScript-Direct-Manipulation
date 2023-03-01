@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="node_modules/paper/dist/paper-full.js"></script>
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<!-- <script type="text/paperscript" src="mouse.js" canvas="myCanvas"> -->
+<script type="text/paperscript" canvas="myCanvas">
+  // We start by defining an empty variable that is visible by both
+  // mouse handlers.
+  var myPath;
+  
+  function onMouseDown(event) {
+    // The mouse was clicked, so let's put a newly created Path into
+    // myPath, give it the color black and add the location as the
+    // path's first segment.
+    myPath = new Path();
+    myPath.strokeColor = new Color(Math.random(), Math.random(), Math.random());;
+    myPath.add(event.point);
+  }
+  
+  function onMouseUp(event) {
+    // The mouse was released, so we add the new location as the end
+    // segment of the line.
+    myPath.add(event.point);
+  }
+</script>
+</head>
+<body>
+	<canvas height="636" style="background: rgb(228, 225, 225); -webkit-user-drag: none; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 538px; height: 318px;" id="myCanvas" width="1076" data-paper-scope="1"></canvas>
+</body>
+</html>
+
